@@ -6,7 +6,7 @@ const refs = {
 
 refs.formElem.addEventListener('input', throttle(onFormInput, 500))
 
-const obj = {};
+let obj = {};
 
 function onFormInput(ev) {
     const value = ev.target.value;
@@ -32,8 +32,9 @@ function onFormSubmit(event) {
     var message = document.querySelector('textarea[name="message"]').value;
 
     console.log({ email: email, message: message });
-
-    localStorage.clear();
+    obj = {};
+    event.target.reset();
+    localStorage.removeItem('feedback-form-state');
 
     document.querySelector('input[name="email"]').value = '';
     document.querySelector('textarea[name="message"]').value = '';
