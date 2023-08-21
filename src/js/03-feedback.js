@@ -4,7 +4,7 @@ const refs = {
     formElem: document.querySelector(".feedback-form")
 }
 
-refs.formElem.addEventListener('input', onFormInput)
+refs.formElem.addEventListener('input', throttle(onFormInput, 500))
 
 const obj = {};
 
@@ -33,11 +33,9 @@ function onFormSubmit(event) {
 
     console.log({ email: email, message: message });
 
+    localStorage.clear();
+
     document.querySelector('input[name="email"]').value = '';
     document.querySelector('textarea[name="message"]').value = '';
 };
 
-const updateStorage = throttle(() => {
-    localStorage.clear();
-}, 500);
-updateStorage();
