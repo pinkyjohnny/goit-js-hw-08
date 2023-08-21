@@ -17,9 +17,9 @@ function onFormInput(ev) {
 
 function onLoadPage() {
     const data = localStorage.getItem('feedback-form-state')
-    const parseData = JSON.parse(data)
-    refs.formElem.elements.email.value = parseData.email;
-    refs.formElem.elements.message.value = parseData.message;
+    const parseData = JSON.parse(data) || {};
+    refs.formElem.elements.email.value = parseData?.email || '';
+    refs.formElem.elements.message.value = parseData?.message || '';
 }
 onLoadPage()
 
