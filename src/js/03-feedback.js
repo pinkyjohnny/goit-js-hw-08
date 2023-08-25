@@ -18,6 +18,7 @@ function onFormInput(ev) {
 function onLoadPage() {
     const data = localStorage.getItem('feedback-form-state')
     const parseData = JSON.parse(data) || {};
+    obj = parseData;
     refs.formElem.elements.email.value = parseData?.email || '';
     refs.formElem.elements.message.value = parseData?.message || '';
 }
@@ -28,8 +29,8 @@ document.querySelector('form').addEventListener('submit', onFormSubmit)
 function onFormSubmit(event) {
     event.preventDefault();
 
-    var email = document.querySelector('input[name="email"]').value;
-    var message = document.querySelector('textarea[name="message"]').value;
+    const email = document.querySelector('input[name="email"]').value;
+    const message = document.querySelector('textarea[name="message"]').value;
 
     console.log({ email: email, message: message });
     obj = {};
