@@ -32,12 +32,18 @@ function onFormSubmit(event) {
     const email = document.querySelector('input[name="email"]').value;
     const message = document.querySelector('textarea[name="message"]').value;
 
-    console.log({ email: email, message: message });
-    obj = {};
-    event.target.reset();
-    localStorage.removeItem('feedback-form-state');
+    if (email === '' || message === '') {
+        window.alert('The field is empty!')
+    } else {
+        console.log({ email: email, message: message });
+        obj = {};
+        event.target.reset();
+        localStorage.removeItem('feedback-form-state');
 
-    document.querySelector('input[name="email"]').value = '';
-    document.querySelector('textarea[name="message"]').value = '';
+        document.querySelector('input[name="email"]').value = '';
+        document.querySelector('textarea[name="message"]').value = '';
+    }
+
+
 };
 
